@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+ 
+
+  .flavor-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* increase space between flavor cards */
+  flex-wrap: nowrap;
+  margin-top: 20px;
+}
+.flavor-card {
+  position: relative;  
+  cursor: pointer;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+
+.flavor-card img.default-img,
+.flavor-card img.hover-img {
+  width: 180px;     
+  height: 180px;    
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  transition: opacity 0.3s ease;
+}
+
+  .flavor-card img.hover-img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .flavor-card:hover img.default-img {
+    opacity: 0;
+  }
+
+  .flavor-card:hover img.hover-img {
+    opacity: 1;
+  }
+
+  .flavor-name {
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  h2 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+  }
+</style>
+
+<h2>Our Flavors</h2>
+
+<div class="flavor-container">
+  <div class="flavor-card">
+    <img src="{% static 'images/o.webp' %}" alt="Orange" class="default-img" />
+    <img src="{% static 'images/orange.jpg' %}" alt="Orange Hover" class="hover-img" />
+    <div class="flavor-name">Orange</div>
+  </div>
+  <div class="flavor-card">
+    <img src="{% static 'images/b.webp' %}" alt="Bubblegum" class="default-img" />
+    <img src="{% static 'images/bubble.jpg' %}" alt="Bubblegum Hover" class="hover-img" />
+    <div class="flavor-name">Bubblegum</div>
+  </div>
+  <div class="flavor-card">
+    <img src="{% static 'images/m.webp' %}" alt="Mango Twist" class="default-img" />
+    <img src="{% static 'images/mango.webp' %}" alt="Mango Twist Hover" class="hover-img" />
+    <div class="flavor-name">Mango</div>
+  </div>
+  <div class="flavor-card">
+    <img src="{% static 'images/c.webp' %}" alt="Cola" class="default-img" />
+    <img src="{% static 'images/cola.jpg' %}" alt="Cola Hover" class="hover-img" />
+    <div class="flavor-name">Cola</div>
+  </div>
+  <div class="flavor-card">
+    <img src="{% static 'images/l.jpg' %}" alt="Lemon" class="default-img" />
+    <img src="{% static 'images/lemon.jpg' %}" alt="Lemon Hover" class="hover-img" />
+    <div class="flavor-name">Lemon</div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+.card {
+  width: 280px;
+  height: 280px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.6);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(255, 111, 0, 0.15); /* soft orange overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1; /* this is now ABOVE background, but BELOW content */
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card > * {
+  position: relative;
+  z-index: 2; /* ensures content stays on top */
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  background-color: #fff3e0; /* light orange */
+}
+
+.card-img-top {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-weight: 700;
+  color: #ff6f00;
+  text-align: center;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+</style>
+<div class="container-fluid px-0">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/skippi.jpg' %}" class="d-block w-100" alt="Skippi Icepop 1" style="height: 500px; object-fit: contain;">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color: #003366;">The taste you love,the quality you deserve!</h5>
+                    <p style="color: black;">Crafting the Perfect Icepops for You!</p>
+                </div>
+            </div>
+            
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<!-- Icepop Flavour Cards -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Select Ice Popsicles</h2>
+    <div class="row">
+
+        <!-- Orange -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/o.webp' %}" class="card-img-top" alt="Orange">
+                <div class="card-body">
+                    <h5 class="card-title">Orange</h5>
+                    <p class="card-text">Refreshing orange flavor.<span class="price">₹100</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cola -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/c.webp' %}" class="card-img-top" alt="Cola">
+                <div class="card-body">
+                    <h5 class="card-title">Cola</h5>
+                    <p class="card-text">Classic cola blast.<span class="price">₹110</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lemon -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/l.jpg' %}" class="card-img-top" alt="Lemon">
+                <div class="card-body">
+                    <h5 class="card-title">Lemon</h5>
+                    <p class="card-text">Tangy lemon taste.<span class="price">₹105</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mango -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/m.webp' %}" class="card-img-top" alt="Mango">
+                <div class="card-body">
+                    <h5 class="card-title">Mango</h5>
+                    <p class="card-text">Delicious mango delight.<span class="price">₹120</span></p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Bubblegum -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/b.webp' %}" class="card-img-top" alt="Bubblegum">
+                <div class="card-body">
+                    <h5 class="card-title">Bubblegum</h5>
+                    <p class="card-text">Sweet bubblegum pop.<span class="price">₹115</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Flavours -->
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/com.webp' %}" class="card-img-top" alt="All Flavours">
+                <div class="card-body">
+                    <h5 class="card-title">All Flavours</h5>
+                    <p class="card-text">Mix of all exciting flavours.<span class="price">₹300</span></p>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Closing .row -->
+</div>
+
+{% endblock %}
